@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fachri Alzidan — CV & Portofolio TJKT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E16;
+    --surface:#141B28;
+    --surface-2:#1B2333;
+    --border:#2A3447;
+    --amber:#FF9D45;
+    --cyan:#4FD1C5;
+    --text:#E8EEF5;
+    --muted:#8B98AC;
+    --radius:10px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.15;
+  }
+
+  a{color:var(--amber);text-decoration:none;}
+
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(10,14,22,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .prompt{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    color:var(--cyan);
+    white-space:nowrap;
+  }
+  .prompt .cursor{
+    display:inline-block;
+    width:8px;height:14px;
+    background:var(--amber);
+    margin-left:4px;
+    vertical-align:-2px;
+    animation:blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+  }
+  nav a{
+    color:var(--muted);
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--amber);}
+  nav a::before{content:"./"; color:var(--border);}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:96px 0 80px;
+    border-bottom:1px solid var(--border);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:0; right:-200px;
+    width:520px; height:520px;
+    background:
+      radial-gradient(circle at center, rgba(255,157,69,0.08) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .status-line{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--cyan);
+    border:1px solid var(--border);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:28px;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 0 3px rgba(79,209,197,0.15);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.4;}
+  }
+  .hero h1{
+    font-size:clamp(40px, 7vw, 76px);
+    margin-bottom:8px;
+  }
+  .hero h1 .accent{color:var(--amber);}
+  .hero .role{
+    font-family:'JetBrains Mono', monospace;
+    font-size:clamp(14px,2.2vw,18px);
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+  .hero .role span{color:var(--cyan);}
+  .hero p.lead{
+    max-width:560px;
+    font-size:16px;
+    color:var(--muted);
+    margin-bottom:36px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:48px;
+    align-items:center;
+  }
+  .photo-frame{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .photo-frame .head{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--cyan);
+    background:var(--surface-2);
+    padding:10px 16px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .photo-frame .head .dot{
+    width:7px;height:7px;
+  }
+  .photo-frame .photo-wrap{
+    aspect-ratio:1/1;
+    overflow:hidden;
+    background:var(--surface-2);
+  }
+  .photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  @media (max-width: 860px){
+    .hero-grid{
+      grid-template-columns:1fr;
+    }
+    .photo-frame{
+      max-width:260px;
+      order:-1;
+    }
+  }
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;}
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+    padding:13px 24px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    transition:all .2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:#1A0E02;
+    border-color:var(--amber);
+    font-weight:600;
+  }
+  .btn-primary:hover{background:#ffb066;}
+  .btn-ghost{color:var(--text);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .social-row{display:flex;gap:16px;}
+  .social-row a{
+    width:40px;height:40px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);
+    transition:all .2s;
+  }
+  .social-row a:hover{
+    color:var(--amber);
+    border-color:var(--amber);
+  }
+
+  /* ===== SECTION LABEL (rack unit style) ===== */
+  .rack-label{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:48px;
+  }
+  .rack-label .u{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--amber);
+    border:1px solid var(--border);
+    padding:4px 10px;
+    border-radius:4px;
+    white-space:nowrap;
+  }
+  .rack-label h2{
+    font-size:clamp(26px,4vw,38px);
+  }
+  .rack-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--border);
+    align-self:center;
+  }
+
+  section{padding:88px 0;border-bottom:1px solid var(--border);}
+
+  /* ===== ABOUT (ifconfig card) ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .about-grid p{color:var(--muted);margin-bottom:16px;}
+  .about-grid p:last-child{margin-bottom:0;}
+
+  .ifconfig{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .ifconfig .head{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--cyan);
+    background:var(--surface-2);
+    padding:12px 20px;
+    border-bottom:1px solid var(--border);
+  }
+  .ifconfig .head .ok{
+    color:var(--amber);
+    margin-left:8px;
+  }
+  .ifconfig dl{
+    padding:20px;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:12px 16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+  }
+  .ifconfig dt{color:var(--muted);}
+  .ifconfig dd{color:var(--text);}
+
+  /* ===== SKILLS — PATCH PANEL ===== */
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+    margin-bottom:32px;
+  }
+  .panel-title{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:24px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .panel-title::after{content:"";flex:1;height:1px;background:var(--border);}
+
+  .port-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+  }
+  .port{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px 14px;
+    background:var(--surface-2);
+    transition:border-color .25s, transform .25s;
+    cursor:default;
+  }
+  .port:hover, .port:focus-within{
+    border-color:var(--cyan);
+    transform:translateY(-2px);
+  }
+  .port .jack{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+  }
+  .port .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .port .led{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--border);
+    transition:background .25s, box-shadow .25s;
+  }
+  .port:hover .led{
+    background:var(--amber);
+    box-shadow:0 0 0 4px rgba(255,157,69,0.12);
+  }
+  .port .label{
+    font-size:14px;
+    font-weight:500;
+  }
+
+  .softskill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .softskill{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--cyan);
+    border:1px solid var(--border);
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--surface-2);
+  }
+
+  /* ===== EDUCATION — TRACEROUTE ===== */
+  .traceroute{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .hop{
+    display:grid;
+    grid-template-columns:60px 1fr;
+    gap:24px;
+    position:relative;
+    padding-bottom:48px;
+  }
+  .hop:last-child{padding-bottom:0;}
+  .hop .hopnum{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--amber);
+    text-align:center;
+    position:relative;
+  }
+  .hop .hopnum .marker{
+    width:14px;height:14px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--amber);
+    margin:6px auto 0;
+    position:relative;
+    z-index:2;
+  }
+  .hop:not(:last-child) .hopnum::after{
+    content:"";
+    position:absolute;
+    top:34px;
+    left:50%;
+    transform:translateX(-50%);
+    width:1px;
+    height:calc(100% - 10px);
+    background:repeating-linear-gradient(to bottom, var(--border) 0 6px, transparent 6px 12px);
+  }
+  .hop-content{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .hop-content .ms{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .hop-content h3{
+    font-size:18px;
+    margin-bottom:4px;
+  }
+  .hop-content .sub{
+    color:var(--cyan);
+    font-size:14px;
+    font-family:'JetBrains Mono', monospace;
+    margin-bottom:10px;
+  }
+  .hop-content p{color:var(--muted);font-size:14px;}
+
+  /* ===== PROJECTS ===== */
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  .project-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .25s;
+  }
+  .project-card:hover{border-color:var(--amber);}
+  .project-thumb{
+    height:140px;
+    background:var(--surface-2);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid var(--border);
+  }
+  .project-thumb .net-icon{
+    width:54px;height:54px;
+    opacity:0.5;
+  }
+  .project-body{padding:22px;flex:1;display:flex;flex-direction:column;}
+  .project-body h3{font-size:17px;margin-bottom:8px;}
+  .project-body p{color:var(--muted);font-size:14px;margin-bottom:16px;flex:1;}
+  .tag-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    border:1px solid var(--border);
+    padding:4px 10px;
+    border-radius:4px;
+  }
+
+  /* ===== CERTIFICATES ===== */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  .cert-item{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .cert-icon{
+    width:42px;height:42px;
+    flex-shrink:0;
+    border-radius:8px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--amber);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    font-weight:600;
+  }
+  .cert-item h4{font-size:15px;margin-bottom:4px;}
+  .cert-item .meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:48px;
+  }
+  .contact-info .item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    margin-bottom:24px;
+  }
+  .contact-info .icon{
+    width:38px;height:38px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cyan);
+    flex-shrink:0;
+  }
+  .contact-info .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:2px;
+  }
+  .contact-info .value{font-size:15px;}
+
+  form{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  .field label::before{content:"$ ";color:var(--amber);}
+  .field input, .field textarea{
+    width:100%;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:12px 14px;
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:14px;
+    resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--cyan);
+  }
+  form .btn{width:100%;justify-content:center;border:none;cursor:pointer;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:32px 0;
+    text-align:center;
+  }
+  footer .mono{
+    font-size:12px;
+    color:var(--muted);
+  }
+  footer .mono .accent{color:var(--amber);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px){
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .project-grid, .cert-grid{grid-template-columns:1fr;}
+    .port-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+
+  @media (max-width: 640px){
+    nav ul{display:none;}
+    .ifconfig dl{grid-template-columns:100px 1fr;font-size:12px;}
+    section{padding:64px 0;}
+    .hero{padding:64px 0 56px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="prompt">fachri@portofolio:~$<span class="cursor"></span></div>
+    <nav>
+      <ul>
+        <li><a href="#tentang">tentang</a></li>
+        <li><a href="#keahlian">keahlian</a></li>
+        <li><a href="#pendidikan">pendidikan</a></li>
+        <li><a href="#proyek">proyek</a></li>
+        <li><a href="#sertifikat">sertifikat</a></li>
+        <li><a href="#kontak">kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="border-bottom:1px solid var(--border);padding-top:96px;">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="status-line">
+          <span class="dot"></span> STATUS: ONLINE — SIAP MAGANG / KERJA
+        </div>
+        <h1>Fachri<br><span class="accent">Alzidan</span></h1>
+        <p class="role">hostname: fachri-tjkt &nbsp;//&nbsp; jurusan: <span>Teknik Jaringan Komputer dan Telekomunikasi</span></p>
+        <p class="lead">
+          Siswa TJKT yang berfokus pada jaringan komputer, administrasi Linux Server, konfigurasi MikroTik dan Cisco,
+          hingga Cloud Computing dengan AWS. Terbiasa membangun infrastruktur server, mengatur routing/firewall,
+          dan memonitor jaringan menggunakan Zabbix.
+        </p>
+        <div class="btn-row">
+          <a href="#kontak" class="btn btn-primary">Hubungi Saya</a>
+          <a href="cv-fachri-alzidan.pdf" class="btn btn-ghost">Unduh CV (PDF)</a>
+        </div>
+        <div class="social-row">
+          <a href="https://wa.me/6281294200392" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a href="mailto:fachrialzidan@smkwikrama.sch.id" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+          <a href="https://instagram.com/fahriialz_" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://github.com/" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <div class="head"><span class="dot" style="border-radius:50%;"></span> foto-profil.jpg</div>
+        <div class="photo-wrap">
+          <img src="foto.jpg" alt="Foto profil Fachri Alzidan">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TENTANG ============ -->
+<section id="tentang">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U01</span>
+      <h2>Tentang Saya</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>
+          Saya adalah siswa SMK Wikrama Bogor jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT).
+          Saya memiliki minat besar dalam bidang jaringan komputer, administrasi server, cloud computing,
+          dan keamanan jaringan.
+        </p>
+        <p>
+          Saya terbiasa mengonfigurasi MikroTik untuk hotspot, routing, firewall, dan manajemen bandwidth,
+          membangun server berbasis Linux (DNS, DHCP, Web Server), serta melakukan deployment aplikasi
+          di Cloud menggunakan AWS (EC2, Load Balancer, Auto Scaling). Saya juga terbiasa memantau
+          kondisi jaringan dan server menggunakan Zabbix.
+        </p>
+        <p>
+          Saya terbuka untuk kesempatan magang industri maupun posisi entry-level di bidang Network Support,
+          System Administrator, atau Cloud Support.
+        </p>
+      </div>
+      <div class="ifconfig">
+        <div class="head">root@server:~# ifconfig profil <span class="ok">[UP]</span></div>
+        <dl>
+          <dt>nama</dt><dd>Fachri Alzidan</dd>
+          <dt>sekolah</dt><dd>SMK Wikrama Bogor</dd>
+          <dt>jurusan</dt><dd>TJKT</dd>
+          <dt>kelas</dt><dd>XII TJKT</dd>
+          <dt>lokasi</dt><dd>Bogor, Jawa Barat</dd>
+          <dt>email</dt><dd>fachrialzidan@smkwikrama.sch.id</dd>
+          <dt>whatsapp</dt><dd>0812-9420-0392</dd>
+          <dt>instagram</dt><dd>@fahriialz_</dd>
+          <dt>status</dt><dd>Siap Magang / Kerja</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEAHLIAN ============ -->
+<section id="keahlian">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U02</span>
+      <h2>Keahlian</h2>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Patch Panel — Hard Skill (hover untuk koneksi)</div>
+      <div class="port-grid">
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 01</span><span class="led"></span></div>
+          <div class="label">MikroTik — Hotspot, Routing & Firewall</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 02</span><span class="led"></span></div>
+          <div class="label">Administrasi Linux Server (Ubuntu/Debian)</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 03</span><span class="led"></span></div>
+          <div class="label">Cloud Computing — AWS (EC2, Load Balancer)</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 04</span><span class="led"></span></div>
+          <div class="label">Cisco Packet Tracer & Routing</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 05</span><span class="led"></span></div>
+          <div class="label">DNS & DHCP Server</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 06</span><span class="led"></span></div>
+          <div class="label">Konfigurasi Web Server</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 07</span><span class="led"></span></div>
+          <div class="label">Monitoring Jaringan dengan Zabbix</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 08</span><span class="led"></span></div>
+          <div class="label">Subnetting & Troubleshooting Jaringan</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 09</span><span class="led"></span></div>
+          <div class="label">Instalasi Kabel UTP & Fiber Optik</div>
+        </div>
+        <div class="port" tabindex="0">
+          <div class="jack"><span class="num">PORT 10</span><span class="led"></span></div>
+          <div class="label">Konfigurasi Jaringan Wireless</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Soft Skill</div>
+      <div class="softskill-row">
+        <span class="softskill">Kerja Tim</span>
+        <span class="softskill">Problem Solving</span>
+        <span class="softskill">Komunikasi</span>
+        <span class="softskill">Manajemen Waktu</span>
+        <span class="softskill">Teliti & Disiplin</span>
+        <span class="softskill">Adaptif</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PENDIDIKAN ============ -->
+<section id="pendidikan">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U03</span>
+      <h2>Pendidikan & Pengalaman</h2>
+    </div>
+
+    <div class="traceroute">
+      <div class="hop">
+        <div class="hopnum">1<div class="marker"></div></div>
+        <div class="hop-content">
+          <div class="ms">SD</div>
+          <h3>SDN Pasawahan</h3>
+          <div class="sub">Pendidikan Sekolah Dasar</div>
+          <p>Menyelesaikan pendidikan sekolah dasar dengan ketertarikan awal pada bidang komputer dan teknologi.</p>
+        </div>
+      </div>
+      <div class="hop">
+        <div class="hopnum">2<div class="marker"></div></div>
+        <div class="hop-content">
+          <div class="ms">SMP</div>
+          <h3>SMP Negeri 1 Cicurug</h3>
+          <div class="sub">Pendidikan Menengah Pertama</div>
+          <p>Menyelesaikan pendidikan menengah pertama dengan ketertarikan pada bidang komputer dan teknologi.</p>
+        </div>
+      </div>
+      <div class="hop">
+        <div class="hopnum">3<div class="marker"></div></div>
+        <div class="hop-content">
+          <div class="ms">Sekarang</div>
+          <h3>SMK Wikrama Bogor</h3>
+          <div class="sub">Teknik Jaringan Komputer dan Telekomunikasi (TJKT)</div>
+          <p>Mempelajari instalasi dan administrasi jaringan, konfigurasi MikroTik dan Cisco, administrasi
+          Linux Server, cloud computing dengan AWS, serta monitoring jaringan menggunakan Zabbix.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROYEK ============ -->
+<section id="proyek">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U04</span>
+      <h2>Proyek & Praktik</h2>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Konfigurasi MikroTik</h3>
+          <p>Membuat hotspot dengan sistem voucher, routing antar jaringan, firewall untuk keamanan,
+          serta manajemen bandwidth per pengguna menggunakan RouterOS MikroTik.</p>
+          <div class="tag-row">
+            <span class="tag">MikroTik</span>
+            <span class="tag">Hotspot</span>
+            <span class="tag">Firewall</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/><circle cx="17" cy="14" r="1" fill="var(--cyan)" stroke="none"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Linux Server</h3>
+          <p>Instalasi dan konfigurasi Ubuntu Server beserta layanan DNS Server, DHCP Server, dan
+          Web Server untuk kebutuhan jaringan internal.</p>
+          <div class="tag-row">
+            <span class="tag">Ubuntu Server</span>
+            <span class="tag">DNS/DHCP</span>
+            <span class="tag">Web Server</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M3 12c4-6 14-6 18 0"/><path d="M6 15c2.5-3.5 9.5-3.5 12 0"/><circle cx="12" cy="19" r="1.5" fill="var(--cyan)" stroke="none"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>AWS Cloud</h3>
+          <p>Melakukan deployment website menggunakan layanan Amazon EC2, mengatur Load Balancer untuk
+          distribusi trafik, dan menerapkan Auto Scaling agar server tetap stabil saat trafik meningkat.</p>
+          <div class="tag-row">
+            <span class="tag">AWS EC2</span>
+            <span class="tag">Load Balancer</span>
+            <span class="tag">Auto Scaling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Zabbix Monitoring</h3>
+          <p>Memantau status server dan perangkat jaringan secara real-time menggunakan Zabbix, termasuk
+          pengaturan alert untuk mendeteksi gangguan lebih awal.</p>
+          <div class="tag-row">
+            <span class="tag">Zabbix</span>
+            <span class="tag">Monitoring</span>
+            <span class="tag">Alerting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Konfigurasi VLAN & Routing Antar Departemen</h3>
+          <p>Merancang topologi jaringan kantor dengan beberapa VLAN berbeda (HRD, Keuangan, IT, Umum)
+          dan inter-VLAN routing menggunakan router layer 3.</p>
+          <div class="tag-row">
+            <span class="tag">Cisco Packet Tracer</span>
+            <span class="tag">VLAN</span>
+            <span class="tag">Routing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg class="net-icon" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M3 12c4-6 14-6 18 0"/><path d="M6 15c2.5-3.5 9.5-3.5 12 0"/><circle cx="12" cy="19" r="1.5" fill="var(--cyan)" stroke="none"/></svg>
+        </div>
+        <div class="project-body">
+          <h3>Terminasi Kabel Fiber Optik Lab Komputer</h3>
+          <p>Melakukan splicing dan terminasi kabel fiber optik single-mode, pengujian redaman dengan
+          power meter, serta dokumentasi jalur kabel di lab.</p>
+          <div class="tag-row">
+            <span class="tag">Fiber Optic</span>
+            <span class="tag">Splicing</span>
+            <span class="tag">Power Meter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERTIFIKAT ============ -->
+<section id="sertifikat">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U05</span>
+      <h2>Sertifikat & Pelatihan</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <div class="cert-icon">UKK</div>
+        <div>
+          <h4>Uji Kompetensi Keahlian (UKK) TJKT</h4>
+          <div class="meta">SMK Wikrama Bogor — Konsentrasi Teknik Jaringan</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">MTCNA</div>
+        <div>
+          <h4>Pelatihan Dasar MikroTik (MTCNA)</h4>
+          <div class="meta">Lembaga Pelatihan Mitra Sekolah</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">AWS</div>
+        <div>
+          <h4>Pengenalan Cloud Computing — AWS</h4>
+          <div class="meta">Pelatihan Cloud Computing</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">CCNA</div>
+        <div>
+          <h4>Cisco Networking Academy — Introduction to Networks</h4>
+          <div class="meta">Cisco Networking Academy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section id="kontak" style="border-bottom:none;">
+  <div class="container">
+    <div class="rack-label">
+      <span class="u">U06</span>
+      <h2>Kontak</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="item">
+          <div class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </div>
+          <div>
+            <div class="label">Email</div>
+            <div class="value">fachrialzidan@smkwikrama.sch.id</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="label">No. HP / WhatsApp</div>
+            <div class="value">0812-9420-0392</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div>
+            <div class="label">Instagram</div>
+            <div class="value">@fahriialz_</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="label">Lokasi</div>
+            <div class="value">Bogor, Jawa Barat</div>
+          </div>
+        </div>
+      </div>
+
+      <form action="https://formsubmit.co/your-email@example.com" method="POST">
+        <div class="field">
+          <label>nama</label>
+          <input type="text" name="nama" placeholder="Nama lengkap" required>
+        </div>
+        <div class="field">
+          <label>email</label>
+          <input type="email" name="email" placeholder="Alamat email" required>
+        </div>
+        <div class="field">
+          <label>pesan</label>
+          <textarea name="pesan" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim Pesan →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="mono">© 2026 Fachri Alzidan — <span class="accent">TJKT</span> · dibangun dengan HTML & CSS</p>
+  </div>
+</footer>
+
+</body>
+</html>
